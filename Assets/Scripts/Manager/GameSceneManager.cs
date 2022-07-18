@@ -105,6 +105,7 @@ public class GameSceneManager : MonoBehaviour
         
         this.gameObject.GetComponent("SpawnItens").SendMessage("StopSpawnItens");
         this.player.SendMessage("playerCanMove", false);
+        this.player.SendMessage("playerCanSpeak", false);
 
         var gameOverGUI = GameObject.FindGameObjectWithTag("GameOverUI");
         gameOverGUI.GetComponentInChildren<Animator>().SetBool("showMenu", true);
@@ -125,6 +126,7 @@ public class GameSceneManager : MonoBehaviour
         this.boostScoreValue = 1;
         this.player.SendMessage("boostSpeed", 1);
         this.player.SendMessage("playerCanMove", true);
+        this.player.SendMessage("playerCanSpeak", true);
         this.player.gameObject.transform.position = new Vector3(0, this.player.gameObject.transform.position.y, 0);
 
         // Update GUI

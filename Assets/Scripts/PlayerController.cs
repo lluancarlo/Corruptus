@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     bool moveLeft;
     bool moveRight;
     bool canMove = true;
+    bool canSpeak = false;
     float speed = 2000f;
     float speedBoost = 1f;
     Vector3 lastPosition;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public void buttonRight(bool press) => this.moveRight = press;
     public void boostSpeed(float value) => this.speedBoost = value;
     public void playerCanMove(bool value) => this.canMove = value;
+    public void playerCanSpeak(bool value) => this.canSpeak = value;
 
     // Private function
     private bool CharMoved()
@@ -33,8 +35,10 @@ public class PlayerController : MonoBehaviour
 
     private void speakSomething()
     {
-        int voiceNum = Random.Range(0, this.voices.Length);
-        this.mouth.PlayOneShot(this.voices[voiceNum]);
+        if (this.canSpeak){
+            int voiceNum = Random.Range(0, this.voices.Length);
+            this.mouth.PlayOneShot(this.voices[voiceNum]);
+        }
     }
 
     private void Start() {
